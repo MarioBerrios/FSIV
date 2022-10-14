@@ -1,0 +1,63 @@
+Se ha realizado todas las partes del ejercicio. Estas partes son (todos los comandos que se
+proporcionan a continuación se deben ejecutar desde el directorio donde se encuentran los
+ficheros fuente del ejercicio "/i12bercm/realzar_primer_plano/" una vez creada la carpeta build
+y compilado con cmake como se explica en la entrega de la práctica):
+
+1) El código está bien escrito, estructurado y compilado. La estructura general del código es 
+    dada por el profesor. En este caso se mantiene dicha estructura y se desarrolla el resto
+    del código a partir de ella. Por otro lado, el programa compila sin problemas siguiendo
+    los comandos que aparecen en la entrega de las prácticas.
+
+2) Se permite seleccionar una región rectangular. Para realizar este apartado se ha utilizado
+    la función "parse.has("r")" para saber si se ha introducido dicha flag. Una vez comprobado
+    se procede a recoger los parámetros de la flag, y mediante un stringstream y tokens se
+    separan en las cuatro variables que se esperan. Los parametros que se esperan con esta 
+    flag son: valor de la x, valor de la y, ancho del rectangulo, alto del rectangulo. Estos
+    parámetros deben ser indicados en dicho orden. El comando para realizar este apartado es:
+
+./build/realzar_primer_plano -r=100,100,200,200 ./data/ciclista_original.jpg ./data/out_rectangulo.jpg
+
+3) Se permite seleccionar una región circular. De manera análoga a la realización de la máscara
+    rectangular, esta flag utiliza "parse.has("c")" y la combinación de stringstream y tokens 
+    para recoger las distintas variables esperadas. Los parametros que se esperan con esta 
+    flag son: valor de la x, valor de la y, radio del circulo. Estos parámetros deben ser 
+    indicados en dicho orden. El comando para realizar este apartado es:
+
+./build/realzar_primer_plano -c=200,200,100 ./data/ciclista_original.jpg ./data/out_circulo.jpg
+
+4) Se permite seleccionar una región usando un polígono cerrado. Una vez más, de manera análoga
+    se recogen las variables de dicha flag. La diferencia esta vez es que las variables se van
+    introduciendo en un "std::vector<cv::Point>" de dos en dos, siendo el primer valor la "x" y
+    el segundo la "y". Se puede usar tantos puntos como se quiera. Los parametros que se 
+    esperan con esta flag son: valor de x1, valor de y2, valor de x2, valor de y2, etc. 
+    Estos parámetros deben ser indicados en dicho orden. El comando para realizar este 
+    apartado es:
+
+./build/realzar_primer_plano -p=100,200,200,300,300,300,300,400,400,400,400,100 ./data/ciclista_original.jpg ./data/out_poligono.jpg
+
+5) Se realiza la selección de la ROI de forma interactiva. Para realizar este apartado se ha
+    utilizado la función "cv::setMouseCallback()". Este apartado tiene tres funcionamientos
+    distintos según la forma de la máscara que se desee. Para indicar la forma de la máscara se
+    debe utilizar junto con la flag -i, la flag correspondiente a dicha forma (-r, -c o -p). En
+    caso de no indicar la forma de la máscara se usará la forma rectangular por defecto.
+    Una vez se haya iniciado el programa se deberá pulsar con el ratón en la imagen "OUTPUT":
+
+    5.1) Rectangulo: Se espera que el usuario pulse los extremos de la diagonal deseada para
+        el rectangulo que se debe generar. Cada dos pulsaciones del ratón se generará una
+        nueva máscara. El comando para realizar este apartado es:
+
+./build/realzar_primer_plano -i -r ./data/ciclista_original.jpg ./data/out_inter_rect.jpg
+    
+    5.2) Circulo: Se espera que el usuario pulse los extremos del radio deseado para el circulo
+        que se debe generar. El primer pulsado del ratón indica el centro del circulo. Cada dos
+        pulsaciones del ratón se generará una nueva máscara. El comando para realizar este 
+        apartado es:
+        
+./build/realzar_primer_plano -i -c ./data/ciclista_original.jpg ./data/out_inter_circ.jpg
+    
+    5.3) Polígono: Se espera que el usuario pulse tantas veces como vértices deba tener el
+        polígono y en el lugar donde quiera que se situen al generarlo. Una vez pulsados los 
+        vertices se debe pulsar la tecla "enter" para generar la máscara. El comando para 
+        realizar este apartado es:
+
+./build/realzar_primer_plano -i -p ./data/ciclista_original.jpg ./data/out_inter_poli.jpg

@@ -1,0 +1,54 @@
+Se ha realizado todas las partes del ejercicio. Estas partes son (todos los comandos que se
+proporcionan a continuación se deben ejecutar desde el directorio donde se encuentran los
+ficheros fuente del ejercicio "/i12bercm/cbg_process/" una vez creada la carpeta build
+y compilado con cmake como se explica en la entrega de la práctica):
+
+1) El código está bien escrito, estructurado y compilado. La estructura general del código es 
+    dada por el profesor. En este caso se mantiene dicha estructura y se desarrolla el resto
+    del código a partir de ella. Por otro lado, el programa compila sin problemas siguiendo
+    los comandos que aparecen en la entrega de las prácticas.
+
+2) Operaciones de conversión byte <> float. El apartado se realiza de forma directa mediante
+    "img.convertTo(out, CV_32F,1.0/255.0, 0.0)" y "img.convertTo(out, CV_8U, 255.0, 0.0)".
+    Se puede comprobar su funcionamiento mediante los test proporcionados por el profesor.
+
+./build/test_common_code
+
+3) Operaciones de conversión BGR <> HSV. El apartado se realiza de forma directa mediante
+    "cv::cvtColor(img, out, cv::COLOR_BGR2HSV)" y "cv::cvtColor(img, out, cv::COLOR_HSV2BGR)"
+    Se puede comprobar su funcionamiento mediante los test proporcionados por el profesor
+    (comando en el apartado 2).
+
+4) Procesado CBG básico. Se realiza llevando a cabo la operación O = c * I^g + b. Antes de
+    realizar la operación se convierten los valores a float para un mejor calculo. Esta 
+    conversión se deshace una vez se haya realizado la operación. En este caso hay que tener 
+    especial cuidado con la suma, puesto que al ser una imagen con tres capas se debe de 
+    sumar medinte "cv::Scalar(valor, valor, valor)". El comando para realizar este apartado es
+    (los valores utilizados son los que hay de ejemplo en la explicación de la práctica):
+
+./build/cbg_process -c=1.9 -b=-0.73 -g=0.14 ./data/ciclista_original.jpg ./data/out_CBG_b.jpg
+
+5) Procesado CBG sólo canal V (luma). De forma análoga a la anterior se debe transformar los
+    valores a float. Se debe pasar de BGR a HSV para poder trabajar solo con el canal V. Una
+    vez en HSV se separan los canales mediante "cv::split()". Se realiza V = c * V^g + b.
+    Calculada el nuevo canal V se vuelven a unir los canales mediante "cv::merge()" y se vuelve
+    a pasar a BGR y a byte. El comando para realizar este apartado es (los valores utilizados 
+    son los que hay de ejemplo en la explicación de la práctica):
+
+./build/cbg_process -l -c=1.9 -b=-0.73 -g=0.14 ./data/ciclista_original.jpg ./data/out_CBG_V.jpg
+
+6) Modo interactivo (-i): En este modo se construye 3 "cv::createTrackbar()", una para cada
+    una de las variables (c, b y g). Se realiza un procesado CBG en caso de que el usuario
+    haya indicado unos valores de c, b y/o g además de luma. A continuación se situa el botón
+    del "trackbar" en el lugar correspondiente haciendo un mapeo de los valores introducidos
+    a los valores del "trackbar". Cada uno de los "trackbar" tiene un callback específico, el
+    cual recoge el valor del "trackbar" y lo mapea a su correspondiente rango. Estos callback,
+    una vez obtenido el valor, vuelven a procesar la imagen y la actualizan por pantalla. Los 
+    comandos para realizar este apartado son (los valores utilizados son los que hay de ejemplo
+    en la explicación de la práctica):
+
+./build/cbg_process -i ./data/ciclista_original.jpg ./data/out_inter.jpg
+
+./build/cbg_process -i -c=1.9 -b=-0.73 -g=0.14 ./data/ciclista_original.jpg ./data/out_inter.jpg
+
+./build/cbg_process -i -l -c=1.9 -b=-0.73 -g=0.14 ./data/ciclista_original.jpg ./data/out_inter.jpg

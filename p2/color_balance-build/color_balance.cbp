@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="color_balance"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="color_balance">
+				<Option output="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/color_balance" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/i686-pc-linux-gnu"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 color_balance"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="color_balance/fast">
+				<Option output="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/color_balance" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/i686-pc-linux-gnu"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 color_balance/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_common_code">
+				<Option output="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/test_common_code" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/i686-pc-linux-gnu"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 test_common_code"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_common_code/fast">
+				<Option output="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/test_common_code" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/i686-pc-linux-gnu"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 test_common_code/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/i12bercm/asignaturas/fsiv/p2/color_balance-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i12bercm/asignaturas/fsiv/p2/color_balance-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/color_balance.cpp">
+			<Option target="color_balance"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/common_code.cpp">
+			<Option target="color_balance"/>
+			<Option target="test_common_code"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/common_code.hpp">
+			<Option target="color_balance"/>
+			<Option target="test_common_code"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/test_common_code.cpp">
+			<Option target="test_common_code"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/../../../../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/../../../../../../usr/local/share/OpenCV/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/../../../../../../usr/local/share/OpenCV/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/i12bercm/asignaturas/fsiv/p2/color_balance/../../../../../../usr/local/share/OpenCV/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

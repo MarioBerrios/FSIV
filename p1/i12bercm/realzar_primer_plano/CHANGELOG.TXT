@@ -1,0 +1,7 @@
+1.0
+- Versión inicial.
+1.1
+- Mejorado el código de test. Ahora los estudientes podrán ver los datos usados
+  para realizar los tests.
+
+
