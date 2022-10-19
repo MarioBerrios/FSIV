@@ -1,0 +1,15 @@
+1.0
+- Versión inicial.
+1.1
+- Simplify code forcing to use square filters.
+- Band the use of cv::copyMakeBorder() to expand the images.`
+1.2
+- Added postconds to check fsiv_circular_expansion().
+- Rewrite to have a common_code.hpp/cpp module and a test_common_code.
+1.3
+- Rewrite the tests to generate a test data file when fail.
+1.4
+- Fixed bug in test_common_code when test fsiv_combine_images.
+1.5
+- Adapted to course 22-23.
+

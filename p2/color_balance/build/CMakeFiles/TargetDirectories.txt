@@ -1,0 +1,4 @@
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p2/color_balance/build/CMakeFiles/color_balance.dir
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p2/color_balance/build/CMakeFiles/test_common_code.dir
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p2/color_balance/build/CMakeFiles/edit_cache.dir
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p2/color_balance/build/CMakeFiles/rebuild_cache.dir
