@@ -1,0 +1,21 @@
+Se han realizado todos los apartados descritos en la práctica. Se presupone que
+todos los comandos aquí descritos se realizan desde /i12bercm/img_equalization.
+Para las imagenes a color se ha hecho tanto la ecualización en RGB como en HSV
+para ver la diferencia. Los primeros apartados son realizados para poder
+hacer los demás.
+
+1) Imagen con radio = 0 y hold_median == false
+
+./build/img_equalization ./data/cells.png ./data/out_cells.png
+
+2) Imagen con radio > 0 y hold_median == false (tarda un poco)
+
+./build/img_equalization -r=25 ./data/cells.png ./data/out_cells.png
+
+3) Imagen con radio = 0 y hold_median == true (no hay mucha diferencia con false)
+
+./build/img_equalization -m ./data/cells.png ./data/out_cells.png
+
+3) Imagen con radio > 0 y hold_median == true (no hay mucha diferencia con false)
+
+./build/img_equalization -r=25 -m ./data/cells.png ./data/out_cells.png
