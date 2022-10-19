@@ -9,6 +9,12 @@ la depuración de errores.
 - Version actualizada para el curso 22-23.
 1.4:
 - Mejorados asertos para accumulate.
+1.5:
+- Corregido CMakeLists.txt para que no pida opencv 3.4
+- Forzar cargar las imagenes con cualquier espacio de color.
+1.6
+- Fixed bug in test_common_code due to some tests success when it would be
+  failt (wrong use of cv::norm).
 
 
 

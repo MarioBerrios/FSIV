@@ -71,7 +71,6 @@ main (int argc, char* const* argv)
 
       //TODO
 
-
       if (input.channels() > 1){
           cv::namedWindow("PROCESADA_RGB", cv::WINDOW_GUI_EXPANDED);
           cv::namedWindow("PROCESADA_HSV", cv::WINDOW_GUI_EXPANDED);
@@ -112,8 +111,8 @@ main (int argc, char* const* argv)
           {
               std::cerr << "Error: could not save the result in file '"
                         << output_name << "'."<< std::endl;
-              return EXIT_FAILURE;
-          }
+                return EXIT_FAILURE;
+            }
       }
   }
   catch (std::exception& e)

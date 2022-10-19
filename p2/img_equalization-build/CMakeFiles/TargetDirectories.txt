@@ -1,4 +1,0 @@
-/home/i12bercm/asignaturas/fsiv/p2/img_equalization-build/CMakeFiles/img_equalization.dir
-/home/i12bercm/asignaturas/fsiv/p2/img_equalization-build/CMakeFiles/test_common_code.dir
-/home/i12bercm/asignaturas/fsiv/p2/img_equalization-build/CMakeFiles/edit_cache.dir
-/home/i12bercm/asignaturas/fsiv/p2/img_equalization-build/CMakeFiles/rebuild_cache.dir

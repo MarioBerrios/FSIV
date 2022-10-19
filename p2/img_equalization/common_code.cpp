@@ -53,12 +53,17 @@ fsiv_accumulate_histogram(cv::Mat& hist)
 
     //TODO
 
-    cv::Mat aux = cv::Mat::zeros(hist.rows, hist.cols, hist.type());
+    /*cv::Mat aux = cv::Mat::zeros(hist.rows, hist.cols, hist.type());
     for(int i = 0 ; i < hist.rows; i++){
         aux.at<float>(i) = hist.at<float>(i) + aux.at<float>(i - 1);
     }
 
     hist = aux;
+    */   
+   
+    for(int i = 1 ; i < hist.rows; i++){
+        hist.at<float>(i) = hist.at<float>(i) + hist.at<float>(i - 1);
+    }
 
     //
 
@@ -162,7 +167,7 @@ fsiv_image_equalization(const cv::Mat& in, cv::Mat& out,
         lkt = fsiv_create_equalization_lookup_table(hist);
         fsiv_apply_lookup_table(in, lkt, out);
     }
-
+    
     //
     CV_Assert(out.rows==in.rows && out.cols==in.cols && out.type()==in.type());
     return out;
