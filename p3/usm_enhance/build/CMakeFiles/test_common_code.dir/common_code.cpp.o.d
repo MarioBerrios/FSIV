@@ -230,4 +230,4 @@ CMakeFiles/test_common_code.dir/common_code.cpp.o: \
  /usr/include/c++/11/bits/unique_lock.h \
  /usr/include/opencv4/opencv2/core/optim.hpp \
  /usr/include/opencv4/opencv2/core/ovx.hpp \
- /usr/include/opencv4/opencv2/core/cvdef.h /usr/include/c++/11/iostream
+ /usr/include/opencv4/opencv2/core/cvdef.h
