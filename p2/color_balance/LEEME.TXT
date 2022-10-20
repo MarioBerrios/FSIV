@@ -3,18 +3,18 @@ desde /i12bercm/color_balance.
 
 1) White patch de una imagen
 
-./build/color_balance ./data/manos_sin_balance3.jpg ./data/out_msb3.jpg
+./build/color_balance ./data/cena-romántica-con-velas-y-vino.jpg ./data/out_cr_wp.jpg
 
 2) Grey world de una imagen
 
-./build/color_balance -p=100 ./data/manos_sin_balance3.jpg ./data/out_msb3.jpg
+./build/color_balance -p=100 ./data/cena-romántica-con-velas-y-vino.jpg ./data/out_cr_gw.jpg
 
 3) Indicando el porcentaje de pixeles más luminosos (10% en este caso)
 
-./build/color_balance -p=10 ./data/manos_sin_balance3.jpg ./data/out_msb3.jpg
+./build/color_balance -p=10 ./data/cena-romántica-con-velas-y-vino.jpg ./data/out_cr_p10.jpg
 
 4) GUI que permite cambiar el valor del porcentaje (0 es white patch y 100 gray world)
-También permite seleccionar con el raton el en la imagen de entrada color que queremos 
+También permite seleccionar con el raton en la imagen de entrada el color que queremos 
 de referencia para el white patch.
 
 ./build/color_balance -i ./data/cena-romántica-con-velas-y-vino.jpg ./data/out_cr.jpg

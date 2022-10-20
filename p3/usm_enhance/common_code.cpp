@@ -1,5 +1,5 @@
 #include "common_code.hpp"
-#include <iostream>
+
 cv::Mat
 fsiv_create_box_filter(const int r)
 {
@@ -172,6 +172,10 @@ fsiv_usm_enhance(cv::Mat  const& in, double g, int r,
     //Hint: use your own functions fsiv_xxxx
 
     cv::Mat expanded, imgLow, filter;
+    if (unsharp_mask == nullptr){
+        unsharp_mask = &imgLow;
+    }
+
     if (filter_type == 0){
         filter = fsiv_create_box_filter(r);
     } else {
@@ -181,14 +185,14 @@ fsiv_usm_enhance(cv::Mat  const& in, double g, int r,
     if (circular) {
         expanded = fsiv_circular_expansion(in, r);
         cv::flip(filter, filter, -1);
-        imgLow = fsiv_filter2D(expanded, filter);
-        ret_v = fsiv_combine_images(in, imgLow, g+1, -g);
+        *unsharp_mask = fsiv_filter2D(expanded, filter);
+        ret_v = fsiv_combine_images(in, *unsharp_mask, g+1, -g);
 
     } else {
         expanded = fsiv_fill_expansion(in, r);
         cv::flip(filter, filter, -1);
-        imgLow = fsiv_filter2D(expanded, filter);
-        ret_v = fsiv_combine_images(in, imgLow, g+1, -g);
+        *unsharp_mask = fsiv_filter2D(expanded, filter);
+        ret_v = fsiv_combine_images(in, *unsharp_mask, g+1, -g);
     }
 
     //

@@ -61,8 +61,10 @@ main (int argc, char* const* argv)
         int filter_type=1;
         bool circular =false;
 
-
-
+        g = parser.get<double>("g");
+        r = parser.get<int>("r");
+        filter_type = parser.get<int>("f");
+        circular = parser.has("c");
         //
 
         cv::Mat in = cv::imread(input_n, cv::IMREAD_UNCHANGED);
@@ -82,7 +84,6 @@ main (int argc, char* const* argv)
 
 
         out = fsiv_usm_enhance(in, g, r, filter_type, circular, &mask);
-
 
         cv::imshow ("INPUT", in);
         cv::imshow ("OUTPUT", out);
