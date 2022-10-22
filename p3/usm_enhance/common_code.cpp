@@ -76,8 +76,7 @@ fsiv_circular_expansion(cv::Mat const& in, const int r)
     // rois to "ret_v" rois.
 
     ret_v = fsiv_fill_expansion(in, r);
-    in(cv::Rect(0, 0, r, r)).copyTo(ret_v(cv::Rect(ret_v.cols - r, 
-        ret_v.rows - r, r, r)));
+    in(cv::Rect(0, 0, r, r)).copyTo(ret_v(cv::Rect(ret_v.cols - r, ret_v.rows - r, r, r)));
     in(cv::Rect(0, 0, r, in.rows)).copyTo(ret_v(cv::Rect(ret_v.cols - r, r, r, in.rows)));
     in(cv::Rect(0, in.rows - r, r, r)).copyTo(ret_v(cv::Rect(ret_v.cols - r, 0, r, r)));
     in(cv::Rect(0, in.rows - r, in.cols, r)).copyTo(ret_v(cv::Rect(r, 0, in.cols, r)));
@@ -110,24 +109,13 @@ fsiv_filter2D(cv::Mat const& in, cv::Mat const& filter)
     //TODO
 
     cv::Mat window, aux;
-    ret_v = cv::Mat::zeros(in.rows-2*(filter.rows/2), in.cols-2*(filter.cols/2), CV_32F);
+    ret_v = cv::Mat::zeros(in.rows - (filter.rows - 1), in.cols - (filter.cols - 1), CV_32F);
 
-    for (int i = 0; i < in.rows-2*(filter.rows/2); i++){
-        for (int j = 0; j < in.cols-2*(filter.cols/2); j++){
+    for (int i = 0; i < in.rows - (filter.rows - 1); i++){
+        for (int j = 0; j < in.cols - (filter.cols - 1); j++){
             window = in(cv::Rect(j, i, filter.cols, filter.rows)).clone();
-
-            /*
-            float sum = 0;
-            for (int k = 0; k < window.rows; k++){
-                for (int l = 0; l < window.cols; l++){
-                    sum += window.at<float>(k, l) * filter.at<float>(k, l);
-                }
-            }
-            */
-
             cv::multiply(window, filter, aux);
             float sum = cv::sum(aux)[0];
-
             ret_v.at<float>(i, j) = sum;
         }
     }
