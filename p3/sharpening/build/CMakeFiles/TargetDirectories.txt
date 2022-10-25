@@ -1,0 +1,4 @@
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p3/sharpening/build/CMakeFiles/sharpen.dir
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p3/sharpening/build/CMakeFiles/test_common_code.dir
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p3/sharpening/build/CMakeFiles/edit_cache.dir
+/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p3/sharpening/build/CMakeFiles/rebuild_cache.dir
