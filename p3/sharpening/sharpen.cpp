@@ -35,70 +35,157 @@ const char* keys =
     "{@output        |<none>| output image.}"
     ;
 
+struct UserData
+{
+    cv::Mat input;
+    cv::Mat output;
+    bool luma;
+    bool circular;
+    int r1;
+    int r2;
+    int filter_type;
+};
 
+void on_change_l(int v, void * user_data_)
+{
+    UserData * user_data = static_cast<UserData*>(user_data_);
+    user_data->luma = v;
+   if (user_data->r1 < user_data->r2)
+        user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
+            user_data->luma, user_data->r1, user_data->r2, user_data->circular);
+    cv::imshow("OUTPUT",user_data->output);
+}
 
+void on_change_f(int v, void * user_data_)
+{
+    UserData * user_data = static_cast<UserData*>(user_data_);
+    user_data->filter_type = v;
+   if (user_data->r1 < user_data->r2)
+        user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
+            user_data->luma, user_data->r1, user_data->r2, user_data->circular);
+    cv::imshow("OUTPUT",user_data->output);
+}
+
+void on_change_r1(int v, void * user_data_)
+{
+    UserData * user_data = static_cast<UserData*>(user_data_);
+    user_data->r1 = v+1;
+   if (user_data->r1 < user_data->r2)
+        user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
+            user_data->luma, user_data->r1, user_data->r2, user_data->circular);
+    cv::imshow("OUTPUT",user_data->output);
+}
+
+void on_change_r2(int v, void * user_data_)
+{
+    UserData * user_data = static_cast<UserData*>(user_data_);
+    user_data->r2 = v+1;
+   if (user_data->r1 < user_data->r2)
+        user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
+            user_data->luma, user_data->r1, user_data->r2, user_data->circular);
+    cv::imshow("OUTPUT",user_data->output);
+}
+
+void on_change_c(int v, void * user_data_)
+{
+    UserData * user_data = static_cast<UserData*>(user_data_);
+    user_data->circular = v;
+    if (user_data->r1 < user_data->r2)
+        user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
+            user_data->luma, user_data->r1, user_data->r2, user_data->circular);
+    
+    cv::imshow("OUTPUT",user_data->output);
+}
 
 int
 main (int argc, char* const* argv)
 {
-  int retCode=EXIT_SUCCESS;
-  
-  try {    
+    int retCode=EXIT_SUCCESS;
 
-      cv::CommandLineParser parser(argc, argv, keys);
-      parser.about("Enhance an image using a sharpening filter. (ver 0.0.0)");
-      if (parser.has("help"))
-      {
-          parser.printMessage();
-          return 0;
-      }
+    try {    
 
-      cv::String input_name = parser.get<cv::String>(0);
-      cv::String output_name = parser.get<cv::String>(1);
+        cv::CommandLineParser parser(argc, argv, keys);
+        parser.about("Enhance an image using a sharpening filter. (ver 0.0.0)");
+        if (parser.has("help"))
+        {
+            parser.printMessage();
+            return 0;
+        }
 
-      //TODO
-      //CLI parameters.
+        cv::String input_name = parser.get<cv::String>(0);
+        cv::String output_name = parser.get<cv::String>(1);
 
-      //
+        //TODO
+        //CLI parameters.
+        UserData user_data;
+        user_data.circular = parser.has("c");
+        user_data.luma = parser.has("l");
+        user_data.r1 = parser.get<int>("r1");
+        user_data.r2 = parser.get<int>("r2");
+        user_data.filter_type = parser.get<int>("f");
+        //
 
-      if (!parser.check())
-      {
-          parser.printErrors();
-          return 0;
-      }
+        if (!parser.check())
+        {
+            parser.printErrors();
+            return 0;
+        }
 
-      cv::Mat input = cv::imread(input_name);
+        user_data.input = cv::imread(input_name);
 
-      if (input.empty())
-	  {
-		  std::cerr << "Error: could not open the input image '" << input_name << "'." << std::endl;
-		  return EXIT_FAILURE;
-	  }
-      cv::Mat output = input.clone();
+        if (user_data.input.empty())
+        {
+            std::cerr << "Error: could not open the input image '" << input_name << "'." << std::endl;
+            return EXIT_FAILURE;
+        }
+        
+        user_data.output = user_data.input.clone();
+        cv::namedWindow("INPUT");
+        cv::namedWindow("OUTPUT");
 
-      //TODO
+        //TODO
+
+        if (parser.has("i")){
+            cv::createTrackbar("Luma", "OUTPUT", nullptr, 1, on_change_l, &user_data);
+            cv::setTrackbarPos("Luma", "OUTPUT", (user_data.luma)?1:0);
+            cv::createTrackbar("Filter [0, 2]", "OUTPUT", nullptr, 2, on_change_f, &user_data);
+            cv::setTrackbarPos("Filter [0, 2]", "OUTPUT", user_data.filter_type);
+            cv::createTrackbar("R1 [1, 50]", "OUTPUT", nullptr, 49, on_change_r1, &user_data);
+            cv::createTrackbar("R2 [1, 20]", "OUTPUT", nullptr, 49, on_change_r2, &user_data);
+            cv::setTrackbarPos("R2 [1, 20]", "OUTPUT", user_data.r2+1);
+            cv::setTrackbarPos("R1 [1, 50]", "OUTPUT", user_data.r1+1);
+            cv::createTrackbar("Circ", "OUTPUT", nullptr, 1, on_change_c, &user_data);
+            cv::setTrackbarPos("Circ", "OUTPUT", (user_data.circular)?1:0);
+        }
+
+        user_data.output = fsiv_image_sharpening(user_data.input, user_data.filter_type, 
+            user_data.luma, user_data.r1, user_data.r2, user_data.circular);
+
+        //
 
 
-      //
-
-      cv::namedWindow("INPUT");
-      cv::namedWindow("OUTPUT");
+        cv::imshow("INPUT", user_data.input);
+        cv::imshow("OUTPUT",user_data.output);
 
 
-      cv::imshow("INPUT", input);
-      cv::imshow("OUTPUT", output);
-
-
-      int key = cv::waitKey(0) & 0xff;
-
-      //TODO
-      //Write the result if it's asked for.
-
-  }
-  catch (std::exception& e)
-  {
-    std::cerr << "Capturada excepcion: " << e.what() << std::endl;
-    retCode = EXIT_FAILURE;
-  }
-  return retCode;
+        int key = cv::waitKey(0) & 0xff;
+        if (key!=27)
+                {
+                    //TODO
+                    //Almacena la imagen.
+                    if (!cv::imwrite(output_name, user_data.output))
+                    {
+                        std::cerr << "Error: could not save the result in file '"
+                                << output_name << "'."<< std::endl;
+                        return EXIT_FAILURE;
+                    }
+                    //
+                }
+        }
+    catch (std::exception& e)
+    {
+        std::cerr << "Capturada excepcion: " << e.what() << std::endl;
+        retCode = EXIT_FAILURE;
+    }
+    return retCode;
 }

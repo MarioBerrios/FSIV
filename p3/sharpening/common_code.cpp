@@ -87,10 +87,9 @@ fsiv_create_sharpening_filter(const int filter_type, int r1, int r2)
         filter = impulso - lap_8;
 
     } else if (filter_type == 2){
-
         cv::Mat G_r1 = fsiv_create_gaussian_filter(r1);
         cv::Mat G_r2 = fsiv_create_gaussian_filter(r2);
-        G_r1 = fsiv_extend_image(G_r1, G_r2.size(), 0);
+        G_r1 = fsiv_extend_image(G_r1, G_r2.size());
 
         cv::Mat impulso = cv::Mat::zeros(G_r1.size(), CV_32FC1);
         impulso.at<float>(r2, r2) = 1;
@@ -99,7 +98,6 @@ fsiv_create_sharpening_filter(const int filter_type, int r1, int r2)
         filter = impulso - dog;
 
     }
-
 
     //
     CV_Assert(filter.type()==CV_32FC1);
@@ -127,24 +125,35 @@ fsiv_image_sharpening(const cv::Mat& in, int filter_type, bool only_luma,
     cv::Mat filter = fsiv_create_sharpening_filter(filter_type, r1, r2);
 
     if (circular == 1){
-        //out = cv::Mat::zeros(in.rows+2*(filter.rows/2), in.cols+2*(filter.cols/2), in.type());
         cv::Size new_size = cv::Size(in.cols + filter.cols, in.rows + filter.rows);
-        out = fsiv_extend_image(in, new_size, 1);
-        cv::filter2D(in, out, -1, filter);
-        //out = out(cv::Rect(filter.cols/2, filter.rows/2, in.cols, in.rows)).clone();
-        //std::cout << std::endl;
-        //std::cout << out.rows << " " << out.cols << std::endl;
-        //std::cout << in.rows << " " << in.cols << std::endl;
-    } else {
-        if (!only_luma){
-            cv::filter2D(in, out, -1, filter);
+        cv::Mat aux;
+        if (only_luma){
+            std::vector<cv::Mat> channels;
+            cv::cvtColor(in, aux, cv::COLOR_BGR2HSV);
+            cv::split(aux, channels);
+            channels[2] = fsiv_extend_image(channels[2], new_size, 1);
+            cv::filter2D(channels[2], channels[2], -1, filter);
+            channels[2] = channels[2](cv::Rect(filter.cols/2, 
+                filter.rows/2, in.cols, in.rows)).clone();
+            cv::merge(channels, out);
+            cv::cvtColor(out, out, cv::COLOR_HSV2BGR);
+
         } else {
+            aux = fsiv_extend_image(in, new_size, 1);
+            cv::filter2D(aux, out, -1, filter);
+            out = out(cv::Rect(filter.cols/2, filter.rows/2, in.cols, in.rows)).clone();
+        }
+    } else {
+
+        if (only_luma){
             std::vector<cv::Mat> channels;
             cv::cvtColor(in, out, cv::COLOR_BGR2HSV);
             cv::split(out, channels);
-            cv::filter2D(channels[2], channels[2], -1/CV_16S/CV_32F/CV_64F, filter);
+            cv::filter2D(channels[2], channels[2], -1, filter);
             cv::merge(channels, out);
             cv::cvtColor(out, out, cv::COLOR_HSV2BGR);
+        } else {
+            cv::filter2D(in, out, -1, filter);
         }
     }
 
