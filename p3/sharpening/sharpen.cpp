@@ -70,7 +70,7 @@ void on_change_r1(int v, void * user_data_)
 {
     UserData * user_data = static_cast<UserData*>(user_data_);
     user_data->r1 = v+1;
-   if (user_data->r1 < user_data->r2)
+    if (user_data->r1 < user_data->r2)
         user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
             user_data->luma, user_data->r1, user_data->r2, user_data->circular);
     cv::imshow("OUTPUT",user_data->output);
@@ -80,7 +80,7 @@ void on_change_r2(int v, void * user_data_)
 {
     UserData * user_data = static_cast<UserData*>(user_data_);
     user_data->r2 = v+1;
-   if (user_data->r1 < user_data->r2)
+    if (user_data->r1 < user_data->r2)
         user_data->output = fsiv_image_sharpening(user_data->input, user_data->filter_type, 
             user_data->luma, user_data->r1, user_data->r2, user_data->circular);
     cv::imshow("OUTPUT",user_data->output);
@@ -101,7 +101,7 @@ int
 main (int argc, char* const* argv)
 {
     int retCode=EXIT_SUCCESS;
-
+    
     try {    
 
         cv::CommandLineParser parser(argc, argv, keys);
@@ -130,7 +130,6 @@ main (int argc, char* const* argv)
             parser.printErrors();
             return 0;
         }
-
         user_data.input = cv::imread(input_name);
 
         if (user_data.input.empty())
@@ -138,7 +137,6 @@ main (int argc, char* const* argv)
             std::cerr << "Error: could not open the input image '" << input_name << "'." << std::endl;
             return EXIT_FAILURE;
         }
-        
         user_data.output = user_data.input.clone();
         cv::namedWindow("INPUT");
         cv::namedWindow("OUTPUT");
@@ -163,29 +161,29 @@ main (int argc, char* const* argv)
 
         //
 
-
         cv::imshow("INPUT", user_data.input);
-        cv::imshow("OUTPUT",user_data.output);
+        cv::imshow("OUTPUT", user_data.output);
 
 
         int key = cv::waitKey(0) & 0xff;
+
+        //TODO
+        //Write the result if it's asked for.
         if (key!=27)
-                {
-                    //TODO
-                    //Almacena la imagen.
-                    if (!cv::imwrite(output_name, user_data.output))
-                    {
-                        std::cerr << "Error: could not save the result in file '"
-                                << output_name << "'."<< std::endl;
-                        return EXIT_FAILURE;
-                    }
-                    //
-                }
+        {
+            if (!cv::imwrite(output_name, user_data.output))
+            {
+                std::cerr << "Error: could not save the result in file '"
+                        << output_name << "'."<< std::endl;
+                return EXIT_FAILURE;
+            }
         }
+    }
+
     catch (std::exception& e)
     {
         std::cerr << "Capturada excepcion: " << e.what() << std::endl;
         retCode = EXIT_FAILURE;
     }
     return retCode;
-}
+    }

@@ -3,16 +3,16 @@ aquí escritos se deben ejecutar en la dirección /i12bercm/usm_enhance
 
 1) Filtrado Box con expansión de ceros, ganancia = 1 y radio 1
 
-./usm_enhance ../data/ciclista_original.jpg ../data/out_ciclista.png 
+./build/usm_enhance ./data/ciclista_original.jpg ./data/out_ciclista.png 
 
 2) Filtrado Box con expansión circular, ganancia 10 y radio 10
 
-./usm_enhance -c -g=10 -r=10 ../data/ciclista_original.jpg ../data/out_ciclista.png 
+./build/usm_enhance -c -g=10 -r=10 ./data/ciclista_original.jpg ./data/out_ciclista.png 
 
 3) Filtrado Gaussiano con expansión circular, ganancia 10 y radio 10
 
-./usm_enhance -c -f=1 -g=10 -r=10 ../data/ciclista_original.jpg ../data/out_ciclista.png
+./build/usm_enhance -c -f=1 -g=10 -r=10 ./data/ciclista_original.jpg ./data/out_ciclista.png
 
 4) Uso interactivo (NOTA: Al radio se le suma 1 para que nunca sea 0 en el trackbar)
 
-./usm_enhance -i ../data/ciclista_original.jpg ../data/out_ciclista.png 
+./build/usm_enhance -i ./data/ciclista_original.jpg ./data/out_ciclista.png 

@@ -3,20 +3,20 @@ aquí escritos se deben ejecutar en la dirección /i12bercm/sharpening
 
 1) Filtrado LAP_4
 
-./sharpen ../data/ciclista_original.jpg ../out_ciclista.jpg
+./build/sharpen ./data/ciclista_original.jpg ./data/out_ciclista.jpg
 
 2) Filtrado LAP_8 con extensión circular
 
-./sharpen -c -f=1 ../data/ciclista_original.jpg ../out_ciclista.jpg
+./build/sharpen -c -f=1 ./data/ciclista_original.jpg ./data/out_ciclista.jpg
 
 3) Filtrado DoG con extension circular, r1 = 5 y r2 = 15
 
-./sharpen -c -f=2 --r1=5 --r2=15 ../data/ciclista_original.jpg ../out_ciclista.jpg
+./build/sharpen -c -f=2 --r1=5 --r2=15 ./data/ciclista_original.jpg ./data/out_ciclista.jpg
 
 4) Filtrado LAP_8 solo luma
 
-./sharpen -l -f=1 ../data/ciclista_original.jpg ../out_ciclista.jpg
+./build/sharpen -l -f=1 ./data/ciclista_original.jpg ./data/out_ciclista.jpg
 
 5) Modo interactivo
 
-./sharpen -i ../data/ciclista_original.jpg ../out_ciclista.jpg
+./build/sharpen -i ./data/ciclista_original.jpg ./data/out_ciclista.jpg
