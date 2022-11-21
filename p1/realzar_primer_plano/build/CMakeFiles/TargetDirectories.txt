@@ -1,4 +1,0 @@
-/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p1/realzar_primer_plano/build/CMakeFiles/realzar_primer_plano.dir
-/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p1/realzar_primer_plano/build/CMakeFiles/test_common_code.dir
-/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p1/realzar_primer_plano/build/CMakeFiles/edit_cache.dir
-/home/mberrios/Universidad/Estudio/Curso 2022-23/3º curso/FSIV/practicas/p1/realzar_primer_plano/build/CMakeFiles/rebuild_cache.dir

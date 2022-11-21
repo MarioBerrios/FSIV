@@ -1,7 +1,0 @@
-1.0:
-- primera versión.
-1.1:
-- Arreglado fallo en los test para imágenes en color.
-1.2:
-- Mejorado programa de test para generar ficheros con informacion del error.
-

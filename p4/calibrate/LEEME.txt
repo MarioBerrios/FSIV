@@ -1,0 +1,23 @@
+Se han completado todas las partes de la práctica. Los comandos a continuación se 
+usan desde el directorio ./i12bercm/calibrate. He entendido que si no está la flag
+verbose significa que no se quiere mostrar ninguna imagen.
+
+1) Cálculo de parámetros extrínsecos dibujando ejes y corners
+
+./build/calibrate -c=6 -r=5 -s=0.04 --verbose -i=./data/logitech.xml ./data/output_1.yml ./data/logitech_000_000.png
+
+2) Cálculo de los parámetros intrínsecos dibujando ejes y corners (2 fotos)
+
+./build/calibrate -c=6 -r=5 -s=0.04 --verbose ./data/output_1.yml ./data/logitech_000_000.png ./data/logitech_000_001.png
+
+3) Cálculo de los parámetros intrínsecos dibujando ejes y corners (9 fotos)
+
+./build/calibrate -c=6 -r=5 -s=0.04 --verbose ./data/output_1.yml ./data/logitech_000_000.png ./data/logitech_000_001.png ./data/logitech_000_002.png ./data/logitech_000_003.png ./data/logitech_000_004.png ./data/logitech_000_005.png ./data/logitech_000_006.png ./data/logitech_000_007.png ./data/logitech_000_008.png ./data/logitech_000_009.png
+
+4) Corrección de distorsión en una imagen
+
+./build/undistort ./data/elp-intrinsics.xml ./data/elp-view-000.jpg ./data/salida-000.jpg
+
+5) Corrección de distorsión en un video
+
+./build/undistort -v ./data/logitech.xml ./data/tablero_000_000.avi ./data/salida.avi

@@ -1,0 +1,18 @@
+Se han realizado todos los apartados de la práctica. Los comandos a continuación son ejecutados
+desde el directorio ./i12bercm/aug_real.
+
+1) Proyección de una imagen en el video
+
+./build/aug_real -i=./data/computer-vision.jpg 5 6 0.03 ./data/logitech.xml ./data/tablero_000_000.avi
+
+2) Proyección de un video en el video
+
+./build/aug_real -v=./data/tablero_000_000.avi 5 6 0.03 ./data/logitech.xml ./data/tablero_000_000.avi
+
+3) Dibujo de los ejes de coordenadas
+
+./build/aug_real 5 6 0.03 ./data/logitech.xml ./data/tablero_000_000.avi
+
+4) Modelo 3D de una iglesia simple
+
+./build/aug_real 5 6 0.03 -m ./data/logitech.xml ./data/tablero_000_000.avi
