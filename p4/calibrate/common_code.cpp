@@ -212,12 +212,13 @@ fsiv_undistort_video_stream(cv::VideoCapture&input_stream,
     // and then only remap (cv::remap) the input frame with the computed maps.
 
     cv::Mat map1, map2, input_frame, output_frame, r;
-    double delay = 1000.0/fps;
+    double wait_time = 1000.0/fps;
+    int key = 0;
     input_stream >> input_frame;
     cv::initUndistortRectifyMap(camera_matrix, dist_coeffs, r, camera_matrix, 
         input_frame.size(), CV_32FC1, map1, map2);
     
-    while (!input_frame.empty()){
+    while (key != 27 && !input_frame.empty()){
         cv::remap(input_frame, output_frame, map1, map2, interp);
         
         if(input_wname != nullptr){
@@ -229,7 +230,7 @@ fsiv_undistort_video_stream(cv::VideoCapture&input_stream,
 
         input_stream >> input_frame;
         output_stream << output_frame;
-        cv::waitKey(delay);
+        key = cv::waitKey(wait_time); 
     }
     //
     CV_Assert(input_stream.isOpened());
