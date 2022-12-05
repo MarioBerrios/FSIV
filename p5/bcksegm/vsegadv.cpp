@@ -47,38 +47,63 @@ typedef struct {
     float k;
     int period_s;
     int period_l;
+    int stup;
+    int ltup;
+    bool verbose;
 } AppState;
 
 void
 on_change_radius(int v, void* app_state_)
-{
-    std::cout << "Setting seg radius = " << v << std::endl;
+{   
     AppState* app_state = static_cast<AppState*>(app_state_);
     app_state->r = v; 
+    if(app_state->verbose)
+        std::cout << "Setting seg radius = " << v << std::endl;
 }
 
 void
 on_change_gauss(int v, void* app_state_)
 {
-    std::cout << "Setting Gaussian radius = " << v << std::endl;
     AppState* app_state = static_cast<AppState*>(app_state_);
     app_state->g = v; 
+    if(app_state->verbose)
+        std::cout << "Setting Gaussian radius = " << v << std::endl;
 }
 
 void
 on_change_K(int v, void *app_state_)
 {
-    std::cout << "Setting K = " << v/100.0 << std::endl;
     AppState* app_state = static_cast<AppState*>(app_state_);
     app_state->k = v/100.0;
+    if(app_state->verbose)
+        std::cout << "Setting K = " << v/100.0 << std::endl;
 }
 
 void
 on_change_alfa(int v, void *app_state_)
 {
-    std::cout << "Setting Alfa = " << v/100.0 << std::endl;
     AppState* app_state = static_cast<AppState*>(app_state_);
     app_state->a = v/100.0;
+    if(app_state->verbose)
+        std::cout << "Setting Alfa = " << v/100.0 << std::endl;
+}
+
+void
+on_change_stup(int v, void *app_state_)
+{
+    AppState* app_state = static_cast<AppState*>(app_state_);
+    app_state->stup = v;
+    if(app_state->verbose)
+        std::cout << "Setting STUP = " << v << std::endl;
+}
+
+void
+on_change_ltup(int v, void *app_state_)
+{
+    AppState* app_state = static_cast<AppState*>(app_state_);
+    app_state->ltup = v;
+    if(app_state->verbose)
+        std::cout << "Setting LTUP = " << v << std::endl;
 }
 
 int
@@ -141,6 +166,9 @@ main (int argc, char * const argv[])
     app_state.g = gauss_radius;
     app_state.a = alfa;
     app_state.k = K;
+    app_state.stup = stup;
+    app_state.ltup = ltup;
+    app_state.verbose = verbose;
 
     cv::VideoWriter output;
     double fps=25.0; //Default value for live video.
@@ -178,8 +206,12 @@ main (int argc, char * const argv[])
     cv::setTrackbarPos("G", "Output", app_state.g);
     cv::createTrackbar("A [0 - 1]", "Output", NULL, 100, on_change_alfa, &app_state);
     cv::setTrackbarPos("A [0 - 1]", "Output", alfa_int);
-    cv::createTrackbar("K [0 - 1]", "Output", NULL, 100, on_change_K, &app_state);
-    cv::setTrackbarPos("K [0 - 1]", "Output", K_int);
+    cv::createTrackbar("K [0 - 5]", "Output", NULL, 500, on_change_K, &app_state);
+    cv::setTrackbarPos("K [0 - 5]", "Output", K_int);
+    cv::createTrackbar("STUP", "Output", NULL, 100, on_change_stup, &app_state);
+    cv::setTrackbarPos("STUP", "Output", stup);
+    cv::createTrackbar("LTUP", "Output", NULL, 1000, on_change_ltup, &app_state);
+    cv::setTrackbarPos("LTUP", "Output", ltup);
 
     //
 
@@ -187,7 +219,10 @@ main (int argc, char * const argv[])
     //TODO
     //First, to learn the gaussian model.
 
-    fsiv_learn_gaussian_model(input, Mean, Variance, num_frames, gauss_radius);
+    if(!fsiv_learn_gaussian_model(input, Mean, Variance, num_frames, gauss_radius)){
+        std::cerr << "Error: could not learn the Gaussian model" << std::endl;
+        return EXIT_FAILURE;
+    }   
 
     //
 
@@ -214,7 +249,7 @@ main (int argc, char * const argv[])
         if (was_Ok){
             fsiv_segm_by_gaussian_model(frame_f, mask, Mean, Variance, app_state.k, app_state.r);
             fsiv_update_gaussian_model(frame_f, mask, frame_count, Mean, Variance, app_state.a, 
-                stup, ltup);
+                app_state.stup, app_state.ltup);
             frame_count++;
 
             masked_frame = cv::Mat();

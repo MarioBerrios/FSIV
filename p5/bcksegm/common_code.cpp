@@ -79,25 +79,29 @@ fsiv_learn_gaussian_model(cv::VideoCapture & input,
 
     for (int i = 0; i < num_frames; i++){
         cv::Mat frame;
-        input >> frame;
-        frame.convertTo(frame, CV_32F, 1.0/255.0, 0.0);
-        if(i == 0){
-            mean = cv::Mat::zeros(frame.size(), frame.type());
-            variance = cv::Mat::zeros(frame.size(), frame.type());
-        }
-        if(gauss_r > 0)
-            cv::GaussianBlur(frame, frame, cv::Size(2*gauss_r + 1, 2*gauss_r + 1), 0.0);
+        was_ok = input.read(frame);
+        if (was_ok){
+            frame.convertTo(frame, CV_32F, 1.0/255.0, 0.0);
+            if(i == 0){
+                mean = cv::Mat::zeros(frame.size(), frame.type());
+                variance = cv::Mat::zeros(frame.size(), frame.type());
+            }
+            if(gauss_r > 0)
+                cv::GaussianBlur(frame, frame, cv::Size(2*gauss_r + 1, 2*gauss_r + 1), 0.0);
 
-        cv::accumulate(frame, mean);
-        cv::accumulateSquare(frame, variance);     
+            cv::accumulate(frame, mean);
+            cv::accumulateSquare(frame, variance);     
+        }
     }
 
-    cv::Mat power_mean;
-    cv::divide(mean, num_frames, mean);
-    cv::divide(variance, num_frames, variance);
-    cv::pow(mean, 2, power_mean);
-    variance -= power_mean;
-
+    if (was_ok){
+        cv::Mat power_mean;
+        cv::divide(mean, num_frames, mean);
+        cv::divide(variance, num_frames, variance);
+        cv::pow(mean, 2, power_mean);
+        variance -= power_mean;
+    }
+    
     //
     CV_Assert(!was_ok || mean.type()==CV_32FC3);
     CV_Assert(!was_ok || variance.type()==CV_32FC3);
