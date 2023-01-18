@@ -14,6 +14,8 @@
 //   make yours.
 #include "gray_levels_features.hpp"
 //#inlude "xxxxxx.hpp"
+#include "histogram_hsv.hpp"
+#include "local_binary_pattern.hpp"
 
 // Remenber: update CMakeLists.txt with the new files.
 //
@@ -29,11 +31,11 @@ cv::Ptr<FeaturesExtractor> FeaturesExtractor::create(FEATURE_IDS id)
     cv::Ptr<FeaturesExtractor> extractor;
     switch (id)
     {
-    case FSIV_GREY_LEVELS:
-    {
-        extractor = cv::makePtr<GrayLevelsFeatures>();
-        break;
-    }
+        case FSIV_GREY_LEVELS:
+        {
+            extractor = cv::makePtr<GrayLevelsFeatures>();
+            break;
+        }
 
         // TODO: add here 'cases' for your features.
         // case FSIV_XXXXX: {
@@ -41,12 +43,22 @@ cv::Ptr<FeaturesExtractor> FeaturesExtractor::create(FEATURE_IDS id)
         //    break;
         // }
         //
-
-    default:
-    {
-        CV_Assert("Error: unknown feature id.");
-        break;
-    }
+            
+        case FSIV_HISTOGRAM_HSV:
+        {
+            extractor = cv::makePtr<HistogramHSV>();
+            break;
+        }
+        case FSIV_LBP:
+        {
+            extractor = cv::makePtr<LocalBinaryPattern>();
+            break;
+        }
+        default:
+        {
+            CV_Assert("Error: unknown feature id.");
+            break;
+        }
     }
     CV_Assert(extractor != nullptr);
     return extractor;

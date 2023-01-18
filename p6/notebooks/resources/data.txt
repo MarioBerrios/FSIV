@@ -1,0 +1,154 @@
+Model: "Model1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ Conv1 (Conv2D)              (None, 124, 124, 20)      1520      
+                                                                 
+ Relu1 (Activation)          (None, 124, 124, 20)      0         
+                                                                 
+ Pool1 (MaxPooling2D)        (None, 62, 62, 20)        0         
+                                                                 
+ flatten_2 (Flatten)         (None, 76880)             0         
+                                                                 
+ Dense1 (Dense)              (None, 640)               49203840  
+                                                                 
+ Ouput (Dense)               (None, 4)                 2564      
+                                                                 
+=================================================================
+Total params: 49,207,924
+Trainable params: 49,207,924
+Non-trainable params: 0
+
+Test loss: 0.8049103021621704
+Test accuracy: 0.5998129844665527
+
+
+
+
+Model: "Model2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ Conv1 (Conv2D)              (None, 124, 124, 20)      1520      
+                                                                 
+ Relu1 (Activation)          (None, 124, 124, 20)      0         
+                                                                 
+ Pool1 (MaxPooling2D)        (None, 62, 62, 20)        0         
+                                                                 
+ Conv2 (Conv2D)              (None, 58, 58, 20)        10020     
+                                                                 
+ Relu2 (Activation)          (None, 58, 58, 20)        0         
+                                                                 
+ Pool2 (MaxPooling2D)        (None, 29, 29, 20)        0         
+                                                                 
+ Conv3 (Conv2D)              (None, 25, 25, 20)        10020     
+                                                                 
+ Relu3 (Activation)          (None, 25, 25, 20)        0         
+                                                                 
+ Pool3 (MaxPooling2D)        (None, 12, 12, 20)        0         
+                                                                 
+ flatten_3 (Flatten)         (None, 2880)              0         
+                                                                 
+ Dense1 (Dense)              (None, 640)               1843840   
+                                                                 
+ Dense2 (Dense)              (None, 640)               410240    
+                                                                 
+ Dense3 (Dense)              (None, 640)               410240    
+                                                                 
+ Ouput (Dense)               (None, 4)                 2564      
+                                                                 
+=================================================================
+Total params: 2,688,444
+Trainable params: 2,688,444
+Non-trainable params: 0
+
+Test loss: 0.9513369798660278
+Test accuracy: 0.6185133457183838
+
+
+
+
+Model: "Model3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ Conv1 (Conv2D)              (None, 124, 124, 20)      1520      
+                                                                 
+ Relu1 (Activation)          (None, 124, 124, 20)      0         
+                                                                 
+ Pool1 (AveragePooling2D)    (None, 62, 62, 20)        0         
+                                                                 
+ Conv2 (Conv2D)              (None, 58, 58, 20)        10020     
+                                                                 
+ Relu2 (Activation)          (None, 58, 58, 20)        0         
+                                                                 
+ Pool2 (AveragePooling2D)    (None, 29, 29, 20)        0         
+                                                                 
+ Conv3 (Conv2D)              (None, 25, 25, 20)        10020     
+                                                                 
+ Relu3 (Activation)          (None, 25, 25, 20)        0         
+                                                                 
+ Pool3 (AveragePooling2D)    (None, 12, 12, 20)        0         
+                                                                 
+ flatten_5 (Flatten)         (None, 2880)              0         
+                                                                 
+ Dense1 (Dense)              (None, 640)               1843840   
+                                                                 
+ Dense2 (Dense)              (None, 640)               410240    
+                                                                 
+ Dense3 (Dense)              (None, 640)               410240    
+                                                                 
+ Ouput (Dense)               (None, 4)                 2564      
+                                                                 
+=================================================================
+Total params: 2,688,444
+Trainable params: 2,688,444
+Non-trainable params: 0
+
+Test loss: 1.3741039037704468
+Test accuracy: 0.4497428834438324
+
+
+
+
+Model: "Model4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ Conv1 (Conv2D)              (None, 124, 124, 20)      1520      
+                                                                 
+ Relu1 (Activation)          (None, 124, 124, 20)      0         
+                                                                 
+ Pool1 (MaxPooling2D)        (None, 62, 62, 20)        0         
+                                                                 
+ Drop1 (Dropout)             (None, 62, 62, 20)        0         
+                                                                 
+ Conv2 (Conv2D)              (None, 58, 58, 20)        10020     
+                                                                 
+ Relu2 (Activation)          (None, 58, 58, 20)        0         
+                                                                 
+ Pool2 (MaxPooling2D)        (None, 29, 29, 20)        0         
+                                                                 
+ Conv3 (Conv2D)              (None, 25, 25, 20)        10020     
+                                                                 
+ Relu3 (Activation)          (None, 25, 25, 20)        0         
+                                                                 
+ Pool3 (MaxPooling2D)        (None, 12, 12, 20)        0         
+                                                                 
+ flatten_1 (Flatten)         (None, 2880)              0         
+                                                                 
+ Dense1 (Dense)              (None, 640)               1843840   
+                                                                 
+ Dense2 (Dense)              (None, 640)               410240    
+                                                                 
+ Dense3 (Dense)              (None, 640)               410240    
+                                                                 
+ Ouput (Dense)               (None, 4)                 2564      
+                                                                 
+=================================================================
+Total params: 2,688,444
+Trainable params: 2,688,444
+Non-trainable params: 0
+
+Test loss: 1.2352806329727173
+Test accuracy: 0.4558204710483551

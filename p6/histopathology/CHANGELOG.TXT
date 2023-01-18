@@ -1,3 +1,6 @@
 * 1.0
 - Start release.
+* 1.1
+- Added jupyter notebook to train a CNN using TensorFlow/Keras.
+
 

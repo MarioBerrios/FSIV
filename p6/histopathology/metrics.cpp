@@ -3,7 +3,6 @@
  *  (C) 2022- FJMC fjmadrid@uco.es
  */
 #include <iomanip>
-#include <iostream>
 #include "metrics.hpp"
 
 cv::Mat
@@ -18,7 +17,6 @@ fsiv_compute_confusion_matrix(const cv::Mat &true_labels,
 
     //TODO: Compute the confussion matrix.
     //Remenber: Rows are the Ground Truth. Cols are the predictions.
-
     for (int i = 0; i < true_labels.rows; i++){
         int t = cv::max(true_labels.at<int>(i), 0);
         int p = cv::max(predicted_labels.at<int>(i), 0);
@@ -44,14 +42,12 @@ fsiv_compute_recognition_rates(const cv::Mat &cmat)
 
         //TODO: compute the recognition rate (RR) for the category.
         //Avoid zero divisions!!.
-
         float total = 0;
         for (int i = 0; i < cmat.cols; i++){
             total += cmat.at<float>(category, i);
         }
         if (total > 0)
             RR[category] = cmat.at<float>(category, category) / total;
-
         //
         CV_Assert(RR[category] >= 0.0f && RR[category] <= 1.0f);
     }
@@ -69,7 +65,6 @@ float fsiv_compute_accuracy(const cv::Mat &cmat)
     //Hint: the accuracy is the rate of correct classifications
     //  to the total.
     //Remenber: avoid zero divisions!!.
-        
     float top = 0;
     float bottom = 0;
     for (int i = 0; i < cmat.rows; i++){
@@ -81,7 +76,6 @@ float fsiv_compute_accuracy(const cv::Mat &cmat)
     
     if (bottom > 0)
         acc = top/bottom;
-
     //
     CV_Assert(acc >= 0.0f && acc <= 1.0f);
     return acc;

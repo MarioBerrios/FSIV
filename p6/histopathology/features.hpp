@@ -18,6 +18,8 @@ typedef enum {
     //FSIV_XXXXX=2,
     //FSIV_YYYYY=3,
     //....
+    FSIV_HISTOGRAM_HSV=2, // Histogram of hue
+    FSIV_LBP=3 // Local Binary Pattern
 } FEATURE_IDS;
 
 /**

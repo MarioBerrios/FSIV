@@ -27,6 +27,8 @@ add_library(common_code STATIC
     features.cpp features.hpp
     gray_levels_features.hpp gray_levels_features.cpp
 #TODO: add your feature extractors files here.
+    histogram_hsv.hpp histogram_hsv.cpp
+    local_binary_pattern.hpp local_binary_pattern.cpp
 )
 
 add_executable(test_common_code test_common_code.cpp)

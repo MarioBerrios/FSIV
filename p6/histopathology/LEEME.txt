@@ -1,0 +1,4 @@
+Se ha realizado todos los apartados de las prácticas
+- Los tests
+- Nuevos extractores de carácteristicas (Histograma y LBP)
+- PDF memoria con gráficas de KNN, SVM y RF
